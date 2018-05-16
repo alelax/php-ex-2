@@ -1,54 +1,35 @@
+<!--
+   Stampare una stringa verde se la
+   variabile password passata in GET è
+   uguale a “Boolean”, altrimenti stampare
+   una stringa rossa.
+-->
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title></title>
+      <link rel="stylesheet" href="style.css">
+      <title>Check password</title>
    </head>
    <body>
 
       <?php
-         $movies = [
-            [
-               'title' => 'Ritorno al futuro',
-               'voto' => 10,
-               'generi' => ['azione', 'horror']
-            ],
-            [
-               'title' => 'Ritorno al futuro 2',
-               'voto' => 10,
-               'generi' => ['drammatico', 'comico', 'sitcom']
-            ],
-            [
-               'title' => 'Ritorno al futuro 3',
-               'voto' => 9,
-               'generi' => ['fantascienza']
-            ],
-         ]
-      ?>
+         $pwd = $_GET['password'];
+         $output = 'Password';
+         $response = '';
+         $class = '';
 
-      <?php  foreach ($movies as $movie) { ?>
-         <div class="Card">
+         if ($pwd == 'boolean') {
+            $response = ' is correct'; ?>
+            <div class="correct">
 
-            <h2 class="title"> <?php echo $movie["title"]; ?></h2>
-            <p class="voto"><?php echo $movie["voto"]; ?></p>
-            <ul>
-               <?php foreach ($movie['generi'] as $genere) { ?>
-                  <li> <?php echo ucfirst($genere) ?> </li>   
-               <?php  } ?>
-
-            </ul>
-         </div>
-
-
+      <?php }  else {
+            $response = ' is wrong';  ?>
+            <div class="wrong">
       <?php } ?>
-<!--
-      <div class="Card">
 
-         <h2 class="title">Ritorno al futuro</h2>
-         <p class="voto">10</p>
-         <p class="genere">sdad</p>
-
-      </div> -->
-
+       <?php echo $output . $response ?></div>
    </body>
 </html>
